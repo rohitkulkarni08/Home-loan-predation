@@ -87,6 +87,10 @@ plt.ylabel('')
 plt.show()
 
 
+# #### Observation:
+# 
+# There is an imbalance in the target column. We will deal with it using SMOTE while building our model
+
 # In[10]:
 
 
@@ -348,7 +352,7 @@ results_df
 
 # ## Using RandomForest to get important features
 
-# In[25]:
+# In[ ]:
 
 
 x2 = df.drop(['LoanID','Default'], axis=1)
@@ -372,7 +376,7 @@ plt.gca().invert_yaxis()
 plt.show()
 
 
-# In[26]:
+# In[ ]:
 
 
 importance_df
@@ -382,7 +386,7 @@ importance_df
 # 
 # There are a lot of features with low importance. Let's select features with an importance greater than 0.03, which seems like a reasonable cutoff based on the given importances. 
 
-# In[27]:
+# In[ ]:
 
 
 selected_features = ['Income', 'InterestRate', 'LoanAmount', 'CreditScore', 'MonthsEmployed', 'DTIRatio', 'Age', 'LoanPurpose', 'LoanTerm']
@@ -397,7 +401,7 @@ print('x_test2:',x_test2.shape)
 print('y_test2:',y_test2.shape)
 
 
-# In[28]:
+# In[ ]:
 
 
 scaling_columns_2 = ['Age','Income','LoanAmount','CreditScore','MonthsEmployed','InterestRate','LoanTerm','DTIRatio']
@@ -409,7 +413,7 @@ x_train2[scaling_columns_2] = scaler.transform(x_train2[scaling_columns_2])
 x_test2[scaling_columns_2] = scaler.transform(x_test2[scaling_columns_2])
 
 
-# In[29]:
+# In[ ]:
 
 
 models2 = {
@@ -452,7 +456,7 @@ for name, model in models2.items():
     print("-" * 50,'\n')
 
 
-# In[30]:
+# In[ ]:
 
 
 results_df2
